@@ -20,7 +20,7 @@ namespace lab1
             note = arr;
         }
 
-        public void calcAverageForStudent()
+        public void calcAverageForStudent() //func average rating
         {
             Console.WriteLine("Средняя оценка выбранного студента: {0}", Math.Round(note.Average(),2));
         }       
