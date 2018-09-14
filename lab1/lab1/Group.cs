@@ -17,7 +17,7 @@ namespace lab1
             this.students = new List<Student>();
         }
 
-        public void addStudent(Student student)
+        public void addStudent(Student student) //func add Student
         {
             students.Add(student);
         }
