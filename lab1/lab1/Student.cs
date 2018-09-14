@@ -12,7 +12,7 @@ namespace lab1
 
         public Student()
         {
-            note = new int[] { 6, 8, 5, 8, 9, 9, 9 };
+            note = new int[] { 6, 8, 5, 8, 9, 4, 4 };
         }
 
         public Student(int[] arr)
