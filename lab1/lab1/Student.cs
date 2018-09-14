@@ -22,7 +22,7 @@ namespace lab1
 
         public void calcAverageForStudent() //func average rating
         {
-            Console.WriteLine("Средняя оценка выбранного студента: {0}", Math.Round(note.Average(),2));
+            Console.WriteLine("Average grade of the selected student: {0}", Math.Round(note.Average(),2));
         }       
     }
 

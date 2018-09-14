@@ -31,7 +31,7 @@ namespace lab1
                 average += item.note.Average();
                 count++;
             }
-            Console.WriteLine("Средняя оценка у группы: {0}", Math.Round(average/count,2));
+            Console.WriteLine("Average score for the group: {0}", Math.Round(average/count,2));
         }
     }
 }
