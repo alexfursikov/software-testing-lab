@@ -27,7 +27,6 @@ namespace lab1
             group2.calcAverageForGroup(1);
 	    group2.calcAverageForGroup(1);
             group2.calcAverageForGroup(2);
-            group2.calcAverageForGroup(2);
         }
     }
 }
