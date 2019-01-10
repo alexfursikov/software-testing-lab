@@ -58,15 +58,15 @@ namespace Framework.Tests
             Assert.AreEqual(success, true);
         }
 
-        [Test] //Test #5
-        public void TestHotels()
-        {
-            bool success = steps.ApplyFilersAndCheckResult("Москва");
-            success = steps.OpenHotelPageFromSearchPage();
-            success = steps.TestTwoStarHotels();
+//         [Test] //Test #5
+//         public void TestHotels()
+//         {
+//             bool success = steps.ApplyFilersAndCheckResult("Москва");
+//             success = steps.OpenHotelPageFromSearchPage();
+//             success = steps.TestTwoStarHotels();
 
-            Assert.AreEqual(success, true);
-        }
+//             Assert.AreEqual(success, true);
+//         }
 
         //[Test] //Test #6
         //public void TestSimulteniousOrdering()
