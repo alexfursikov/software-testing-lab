@@ -120,7 +120,7 @@ namespace Framework.Pages
         public bool CheckErrorMessage()
         {
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
-            wait.Until(driver => driver.FindElement(By.XPath("//div[@class='Common-Results-NoResults hidden']/div")).Text != String.Empty);
+            wait.Until(drivers => drivers.FindElement(By.XPath("//div[@class='Common-Results-NoResults hidden']/div")).Text != String.Empty);
 
             string errortext = driver.FindElement(By.XPath("//div[@class='Common-Results-NoResults hidden']/div")).Text;
 
@@ -156,11 +156,11 @@ namespace Framework.Pages
             bool success = true;
 
             var wait = new WebDriverWait(driver, TimeSpan.FromSeconds(20));
-            wait.Until(driver => driver.FindElement(By.XPath("//div[@class='Base-Results-Rail Flights-Results-FlightLeftRail']/div/div/div[@class='title']")).Text != SEARCH_ENDED);
+            wait.Until(drivers => drivers.FindElement(By.XPath("//div[@class='Base-Results-Rail Flights-Results-FlightLeftRail']/div/div/div[@class='title']")).Text != SEARCH_ENDED);
 
             success = CheckCount();
 
-            var a = wait.Until(driver => ExpectedConditions.ElementExists(By.XPath("//div[@class='Common-Results-Paginator ButtonPaginator visible']")));
+            var a = wait.Until(drivers => ExpectedConditions.ElementExists(By.XPath("//div[@class='Common-Results-Paginator ButtonPaginator visible']")));
             success = a != null ? true : false; 
 
             return success;

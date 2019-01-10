@@ -24,14 +24,14 @@ namespace Framework.Tests
             steps.CloseBrowser();
         }
 
-        [Test] //Test #1
-        public void CheckLanguage()
-        {
-            string region = steps.GetRegion();
-            bool success = steps.CheckLanguage(region);
+        //[Test] //Test #1
+        //public void CheckLanguage()
+        //{
+        //    string region = steps.GetRegion();
+        //    bool success = steps.CheckLanguage(region);
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, true);
+        //}
 
         [Test] //Test #2
         public void CheckBeachRest()
@@ -55,7 +55,7 @@ namespace Framework.Tests
             bool success = steps.CheckBeachRest();
             success = steps.CheckResulredList();
 
-            Assert.Equals(success, true);
+            Assert.AreEqual(success, true);
         }
 
         [Test] //Test #5
@@ -68,46 +68,46 @@ namespace Framework.Tests
             Assert.AreEqual(success, true);
         }
 
-        [Test] //Test #6
-        public void TestSimulteniousOrdering()
-        {
+        //[Test] //Test #6
+        //public void TestSimulteniousOrdering()
+        //{
 
-            bool success = this.steps.ApplyFilersAndCheckResult("Москва (MOW)");
-            success = this.steps.goToOZONOrderPage();
+        //    bool success = this.steps.ApplyFilersAndCheckResult("Москва (MOW)");
+        //    success = this.steps.goToOZONOrderPage();
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, true);
+        //}
 
-        [Test] //Test #7
-        public void OrderCar()
-        {
-            bool success = steps.OrderCar("Москва, Россия - Домодедово");
+        //[Test] //Test #7
+        //public void OrderCar()
+        //{
+        //    bool success = steps.OrderCar("Москва, Россия - Домодедово");
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, true);
+        //}
 
-        [Test] //Test #8
-        public void CheckSimilarCosts()
-        {
-            bool success = steps.Open2TabsAndCheckCosts("Москва (DME)");
+        //[Test] //Test #8
+        //public void CheckSimilarCosts()
+        //{
+        //    bool success = steps.Open2TabsAndCheckCosts("Москва (DME)");
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, false);
+        //}
 
-        [Test] //Test #9
-        public void ValidateCityWithoutAirport()
-        {
-            bool success = steps.ValidateFieldMainPage("Гомель");
+        //[Test] //Test #9
+        //public void ValidateCityWithoutAirport()
+        //{
+        //    bool success = steps.ValidateFieldMainPage("Гомель");
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, true);
+        //}
 
-        [Test] //Test #10
-        public void CkeckMoreResultsButton()
-        {
-            bool success = steps.ValidateMoreResultsButton("Москва (DME)");
+        //[Test] //Test #10
+        //public void CkeckMoreResultsButton()
+        //{
+        //    bool success = steps.ValidateMoreResultsButton("Москва (DME)");
 
-            Assert.AreEqual(success, true);
-        }
+        //    Assert.AreEqual(success, true);
+        //}
     }
 }
