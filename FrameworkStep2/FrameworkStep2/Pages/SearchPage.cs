@@ -2,6 +2,7 @@
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
+using System.Threading;
 
 namespace Framework.Pages
 {
@@ -78,38 +79,40 @@ namespace Framework.Pages
 
         public void FillAirports(string from, string to)
         {
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityFrom));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.Clear();
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.SendKeys(from);
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityFrom));
-            cityFrom.SendKeys(Keys.ArrowDown);
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityFrom));
-            cityFrom.SendKeys(Keys.Enter);
-
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityTo));
+            Thread.Sleep(2000);
+            cityFrom.SendKeys(Keys.Tab);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityTo));
             cityTo.Clear();
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityTo));
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            wait.Until(ExpectedConditions.ElementToBeClickable(cityTo));
+            Thread.Sleep(2000);
+            cityFrom.SendKeys(Keys.Tab);
             cityTo.SendKeys(Keys.Enter);
         }
 
         public void SetOneWayRoute()
         {
-            wait.Until(ExpectedConditions.ElementToBeClickable(datePicker));
-            ExpectedConditions.ElementIsVisible(By.Id("flights_return_way_bot2"));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(datePicker));
+            SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("flights_return_way_bot2"));
             datePicker.Click();
             ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].checked = true;", oneWayTrip);
         }
 
         public void SelectDateTomorrow(int directions)
         {
+            datePicker.Click();
             for (int i = 0; i < directions; i++)
             {
-                datePicker.Click();
-                IWebElement today = driver.FindElement(By.CssSelector("#datepicker2 > div:nth-child(1) > table:nth-child(2) > tbody:nth-child(2) > tr:nth-child(2) > td:nth-child(5) > a:nth-child(1)"));
+                if(directions == 1)
+                {
+                    datePicker.Click();
+                }
+                
+                IWebElement today = driver.FindElement(By.CssSelector($"#datepicker2 > div > table > tbody > tr:nth-child(4) > td:nth-child({i+2}) > a"));
+                wait.Timeout.Add(TimeSpan.FromSeconds(2));
                 //wait.Until(ExpectedConditions.ElementToBeClickable(today));
                 today.Click();
             }
@@ -134,19 +137,19 @@ namespace Framework.Pages
 
         public string GetBadDestinationError()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("flights_destination2-error")));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("flights_destination2-error")));
             return cityToError.Text;
         }
 
         public string GetBadOriginationError()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.Id("flights_origin2-error")));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.Id("flights_origin2-error")));
             return cityFromError.Text;
         }
 
         public string GetDateError()
         {
-            wait.Until(ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\"aviaBot\"]/div[2]/div[4]/div[1]")));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementIsVisible(By.XPath("//*[@id=\"aviaBot\"]/div[2]/div[4]/div[1]")));
             IWebElement dateError = driver.FindElement(By.XPath("//*[@id=\"aviaBot\"]/div[2]/div[4]/div[1]"));
 
             return dateError.Text;
