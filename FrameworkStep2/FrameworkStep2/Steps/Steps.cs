@@ -6,11 +6,14 @@ namespace Framework.Steps
     public class Steps
     {
         IWebDriver driver;
-        SearchPage mainPage;
+        MainPage mainPage;
 
         public void InitBrowser()
         {
             driver = Driver.DriverInstance.GetInstance();
+            mainPage = new MainPage(driver);
+            mainPage.OpenPage();
+
         }
 
         public void CloseBrowser()
@@ -20,13 +23,11 @@ namespace Framework.Steps
 
         public void FindRoute(string from, string to)
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
-            if(from != "")
+            if (from != "")
             {
                 mainPage.Origin(from);
             }
-            if(to != "")
+            if (to != "")
             {
                 mainPage.Destination(to);
 
@@ -37,8 +38,6 @@ namespace Framework.Steps
 
         public void FindRouteWithoutDate(string from, string to)
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.Origin(from);
             mainPage.Destination(to);
             mainPage.SearchClick();
@@ -46,8 +45,6 @@ namespace Framework.Steps
 
         public void FindRouteWithoutReturnDate(string from, string to)
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.Origin(from);
             mainPage.Destination(to);
             mainPage.SelectDateTomorrow(1);
@@ -56,13 +53,11 @@ namespace Framework.Steps
 
         public void FillAirports(string from, string to)
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             if (from != "")
             {
                 mainPage.Origin(from);
             }
-            else if (to != "")
+            if (to != "")
             {
                 mainPage.Destination(to);
             }
@@ -70,30 +65,22 @@ namespace Framework.Steps
 
         public void CheckFromFieldAutoComplete(string from, string to)
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.Origin(from);
             mainPage.Destination(to);
         }
 
         public void ChangeLocaleToRussian()
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.SetRussian();
         }
 
         public void SwitchToSecondAd()
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.GoToSecondAd();
         }
 
         public void SwitchToThirdAd()
         {
-            mainPage = new SearchPage(driver);
-            mainPage.OpenPage();
             mainPage.GoToThirdAd();
         }
 

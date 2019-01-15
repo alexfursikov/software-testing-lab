@@ -6,7 +6,7 @@ using System.Threading;
 
 namespace Framework.Pages
 {
-    public class SearchPage
+    public class MainPage
     {
         private const string BASE_URL = "https://www.s7-airlines.com/en/";
 
@@ -64,7 +64,7 @@ namespace Framework.Pages
 
         private IWebDriver driver;
 
-        public SearchPage(IWebDriver driver)
+        public MainPage(IWebDriver driver)
         {
             this.driver = driver;
             PageFactory.InitElements(this.driver, this);
