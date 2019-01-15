@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Text;
 using System.Threading;
 
 namespace Framework.Tests
@@ -25,34 +24,35 @@ namespace Framework.Tests
         public void FindEmptyDestinationRoute()
         {
             steps.FindRoute("MOW", "");
-            Assert.AreEqual("Поле не заполнено", steps.GetBadDestinationError());
+            Assert.AreEqual("Empty field", steps.GetBadDestinationError());
         }
 
         [Test]
         public void FindOriginationEqualsDestinationRoute()
         {
             steps.FindRoute("MOW", "MOW");
-            Assert.AreEqual("Поле не заполнено", steps.GetBadOriginationError());
+            Assert.AreEqual("Empty field", steps.GetBadOriginationError());
         }
 
         [Test]
         public void FindRouteWithoutDate()
         {
             steps.FindRouteWithoutDate("MOW", "MSQ");
-            Assert.AreEqual("Выберите дату вылета туда и обратно", steps.GetDateError());
+            Assert.AreEqual("Select departure and return dates", steps.GetDateError());
         }
 
         [Test]
         public void FindRouteWithoutReturnDate()
         {
             steps.FindRouteWithoutReturnDate("MOW", "MSQ");
-            Assert.AreEqual("Выберите дату обратного вылета", steps.GetDateError());
+            Assert.AreEqual("Select flight date", steps.GetDateError());
         }
 
         [Test]
         public void CheckOriginationFieldAutoComplete()
         {
             steps.FillAirports("MOW", "");
+
             Assert.AreEqual("MOW", steps.GetOriginationFieldValue());
         }
 
@@ -60,7 +60,6 @@ namespace Framework.Tests
         public void CheckDestinationFieldAutoComplete()
         {
             steps.FillAirports("", "MOW");
-            Thread.Sleep(1000);
             Assert.AreEqual("MOW", steps.GetDestinationFieldValue());
         }
 
@@ -69,20 +68,6 @@ namespace Framework.Tests
         {
             steps.ChangeLocaleToRussian();
             Assert.AreEqual("Search", steps.GetSearchButtonText());
-        }
-
-        [Test]
-        public void SwitchToSecondAd()
-        {
-            steps.SwitchToSecondAd();
-            Assert.AreEqual("Пора\r\nкататься", steps.GetSecondPromoText());
-        }
-
-        [Test]
-        public void SwitchToThirdAd()
-        {
-            steps.SwitchToThirdAd();
-            Assert.AreEqual("Начинать\r\nпутешествие\r\nс покупок", steps.GetThirdPromoText());
         }
     }
 }
