@@ -110,11 +110,13 @@ namespace Framework.Pages
                 {
                     datePicker.Click();
                 }
-                
-                IWebElement today = driver.FindElement(By.CssSelector($"#datepicker2 > div > table > tbody > tr:nth-child(4) > td:nth-child({i+2}) > a"));
-                wait.Timeout.Add(TimeSpan.FromSeconds(2));
-                //wait.Until(ExpectedConditions.ElementToBeClickable(today));
+
+                IWebElement today = driver.FindElement(By.CssSelector("#datepicker2 > div > table > tbody > tr:nth-child(4) > td:nth-child(3) > a"));
+                IWebElement today1 = driver.FindElement(By.CssSelector("#datepicker2 > div > table > tbody > tr:nth-child(4) > td:nth-child(4) > a"));
+
                 today.Click();
+                if(directions == 2)
+                today1.Click();
             }
         }
 
