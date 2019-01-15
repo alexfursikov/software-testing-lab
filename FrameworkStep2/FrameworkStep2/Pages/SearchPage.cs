@@ -89,7 +89,6 @@ namespace Framework.Pages
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedCityTo));
-            cityFrom.SendKeys(Keys.Tab);
             cityTo.SendKeys(Keys.Enter);
         }
 
