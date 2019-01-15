@@ -15,7 +15,7 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "flights_origin2")]
         private IWebElement cityFrom;
 
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[1]/div/span[1]")]
+        [FindsBy(How = How.ClassName, Using = "ac_result_list direction_ft_list")]
         private IWebElement selectedCityFrom;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[3]/div/span[1]")]
@@ -88,7 +88,8 @@ namespace Framework.Pages
             cityTo.Clear();
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedCityTo));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedCityFrom));
+            cityFrom.SendKeys(Keys.Tab);
             cityTo.SendKeys(Keys.Enter);
         }
 
