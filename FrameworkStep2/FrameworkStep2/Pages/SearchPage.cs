@@ -8,7 +8,7 @@ namespace Framework.Pages
 {
     public class SearchPage
     {
-        private const string BASE_URL = "https://www.s7-airlines.com/ru/";
+        private const string BASE_URL = "https://www.s7-airlines.com/en/";
 
         private readonly WebDriverWait wait;
 
