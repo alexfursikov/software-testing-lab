@@ -2,7 +2,6 @@
 using OpenQA.Selenium.Support.PageObjects;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Threading;
 
 namespace Framework.Pages
 {
@@ -82,13 +81,11 @@ namespace Framework.Pages
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.Clear();
             cityFrom.SendKeys(from);
-            Thread.Sleep(2000);
             cityFrom.SendKeys(Keys.Tab);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityTo));
             cityTo.Clear();
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            Thread.Sleep(2000);
             cityFrom.SendKeys(Keys.Tab);
             cityTo.SendKeys(Keys.Enter);
         }
