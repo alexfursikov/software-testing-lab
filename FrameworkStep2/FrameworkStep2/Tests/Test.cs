@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using System.Text;
 using System.Threading;
 
 namespace Framework.Tests
