@@ -22,7 +22,15 @@ namespace Framework.Steps
         {
             mainPage = new SearchPage(driver);
             mainPage.OpenPage();
-            mainPage.FillAirports(from, to);
+            if(from != "")
+            {
+                mainPage.Origin(from);
+            }
+            if(to != "")
+            {
+                mainPage.Destination(to);
+
+            }
             mainPage.SelectDateTomorrow(2);
             mainPage.SearchClick();
         }
@@ -31,7 +39,8 @@ namespace Framework.Steps
         {
             mainPage = new SearchPage(driver);
             mainPage.OpenPage();
-            mainPage.FillAirports(from, to);
+            mainPage.Origin(from);
+            mainPage.Destination(to);
             mainPage.SearchClick();
         }
 
@@ -39,7 +48,8 @@ namespace Framework.Steps
         {
             mainPage = new SearchPage(driver);
             mainPage.OpenPage();
-            mainPage.FillAirports(from, to);
+            mainPage.Origin(from);
+            mainPage.Destination(to);
             mainPage.SelectDateTomorrow(1);
             mainPage.SearchClick();
         }
@@ -48,14 +58,22 @@ namespace Framework.Steps
         {
             mainPage = new SearchPage(driver);
             mainPage.OpenPage();
-            mainPage.FillAirports(from, to);
+            if (from != "")
+            {
+                mainPage.Origin(from);
+            }
+            else if (to != "")
+            {
+                mainPage.Destination(to);
+            }
         }
 
         public void CheckFromFieldAutoComplete(string from, string to)
         {
             mainPage = new SearchPage(driver);
             mainPage.OpenPage();
-            mainPage.FillAirports(from, to);
+            mainPage.Origin(from);
+            mainPage.Destination(to);
         }
 
         public void ChangeLocaleToRussian()

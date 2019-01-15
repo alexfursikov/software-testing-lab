@@ -67,7 +67,7 @@ namespace Framework.Tests
         public void CheckRussianLocale()
         {
             steps.ChangeLocaleToRussian();
-            Assert.AreEqual("Search", steps.GetSearchButtonText());
+            Assert.AreEqual("Найти", steps.GetSearchButtonText());
         }
     }
 }

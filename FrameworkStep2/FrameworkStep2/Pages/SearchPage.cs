@@ -15,7 +15,7 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "flights_origin2")]
         private IWebElement cityFrom;
 
-        [FindsBy(How = How.ClassName, Using = "ac_result_list direction_ft_list")]
+        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[1]/div/span[1]")]
         private IWebElement selectedCityFrom;
 
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[3]/div/span[1]")]
@@ -57,6 +57,10 @@ namespace Framework.Pages
         [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[1]/div/div/div[3]/div/div/div/a/h3")]
         private IWebElement thirdPromo;
 
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[1]/div/div")]
+        private IWebElement x;
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[3]/div/div")]
+        private IWebElement y;
 
         private IWebDriver driver;
 
@@ -64,7 +68,7 @@ namespace Framework.Pages
         {
             this.driver = driver;
             PageFactory.InitElements(this.driver, this);
-            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(5));
+            wait = new WebDriverWait(driver, TimeSpan.FromSeconds(10));
         }
 
         public void OpenPage()
@@ -77,20 +81,24 @@ namespace Framework.Pages
             buttonSearch.Click();
         }
 
-        public void FillAirports(string from, string to)
+        public void Destination(string to)
         {
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
-            cityFrom.Clear();
-            cityFrom.SendKeys(from);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedCityFrom));
-            cityFrom.SendKeys(Keys.Tab);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityTo));
             cityTo.Clear();
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedCityFrom));
-            cityFrom.SendKeys(Keys.Tab);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(y));
             cityTo.SendKeys(Keys.Enter);
+        }
+
+        public void Origin(string from)
+        {
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
+            cityFrom.Clear();
+            cityFrom.SendKeys(from);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(x));
+            cityFrom.SendKeys(Keys.ArrowDown);
+            cityFrom.SendKeys(Keys.Enter);
         }
 
         public void SetOneWayRoute()
@@ -111,10 +119,8 @@ namespace Framework.Pages
                     datePicker.Click();
                 }
 
-                IWebElement today = driver.FindElement(By.CssSelector(String.Format("#datepicker2 > div > table > tbody > tr:nth-child({0}) > td:nth-child(3) > a",i)));
+                IWebElement today = driver.FindElement(By.CssSelector(String.Format("#datepicker2 > div > table > tbody > tr:nth-child({0}) > td:nth-child(3) > a",i+3)));
 
-                today.Click();
-                if(directions == 2)
                 today.Click();
             }
         }
