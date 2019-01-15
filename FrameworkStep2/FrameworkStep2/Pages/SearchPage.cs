@@ -82,13 +82,13 @@ namespace Framework.Pages
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.Clear();
             cityFrom.SendKeys(from);
-            Thread.Sleep(1000);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.SendKeys(Keys.Tab);
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityTo));
             cityTo.Clear();
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            Thread.Sleep(1000);
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.SendKeys(Keys.Tab);
             cityTo.SendKeys(Keys.Enter);
         }
