@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-using System.Threading;
 
 namespace Framework.Tests
 {
@@ -52,7 +51,6 @@ namespace Framework.Tests
         public void CheckOriginationFieldAutoComplete()
         {
             steps.FillAirports("MOW", "");
-
             Assert.AreEqual("MOW", steps.GetOriginationFieldValue());
         }
 

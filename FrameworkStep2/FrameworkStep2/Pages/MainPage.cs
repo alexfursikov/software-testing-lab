@@ -15,10 +15,10 @@ namespace Framework.Pages
         [FindsBy(How = How.Id, Using = "flights_origin2")]
         private IWebElement cityFrom;
 
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[1]/div/span[1]")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[1]/div/span[1]")]
         private IWebElement selectedCityFrom;
 
-        [FindsBy(How = How.XPath, Using = "/html/body/div[2]/div[2]/div[3]/div[2]/div/div/div/div/div[1]/div/div/div[1]/div[1]/form/div[2]/div[3]/div/span[1]")]
+        [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[3]/div/span[1]")]
         private IWebElement selectedCityTo;
 
         [FindsBy(How = How.Id, Using = "flights_origin2-error")]
@@ -58,9 +58,9 @@ namespace Framework.Pages
         private IWebElement thirdPromo;
 
         [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[1]/div/div")]
-        private IWebElement x;
+        private IWebElement selectedFrom;
         [FindsBy(How = How.XPath, Using = "//*[@id=\"aviaBot\"]/div[2]/div[3]/div/div")]
-        private IWebElement y;
+        private IWebElement selectedTo;
 
         private IWebDriver driver;
 
@@ -87,7 +87,7 @@ namespace Framework.Pages
             cityTo.Clear();
             cityTo.SendKeys("");
             cityTo.SendKeys(to);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(y));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedTo));
             cityTo.SendKeys(Keys.Enter);
         }
 
@@ -96,7 +96,7 @@ namespace Framework.Pages
             wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(cityFrom));
             cityFrom.Clear();
             cityFrom.SendKeys(from);
-            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(x));
+            wait.Until(SeleniumExtras.WaitHelpers.ExpectedConditions.ElementToBeClickable(selectedFrom));
             cityFrom.SendKeys(Keys.Enter);
         }
 

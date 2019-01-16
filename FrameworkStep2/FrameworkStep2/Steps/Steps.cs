@@ -13,7 +13,6 @@ namespace Framework.Steps
             driver = Driver.DriverInstance.GetInstance();
             mainPage = new MainPage(driver);
             mainPage.OpenPage();
-
         }
 
         public void CloseBrowser()
